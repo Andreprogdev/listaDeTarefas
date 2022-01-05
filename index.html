@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <link rel = "stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+
+
+    <script>
+
+
+        function salvarTarefaLocalStorage(){
+            let element = document.getElementById("caixa")
+
+            if(element.value == ""){
+                alert("digite algo");
+                return;
+                
+            }
+            
+            
+            
+            let tarefas = []
+
+            if(getTarefas() != null){
+                tarefas = getTarefas() // ["teste", "teste2"]
+                }
+            
+            
+            
+            //insere valor no array
+            tarefas.push(element.value)
+
+
+            //salva no localStorage
+            localStorage.setItem("tarefa", JSON.stringify(tarefas));
+
+            document.getElementById("caixa").value = ""
+            
+           
+
+            renderizar()
+            }
+
+
+        function renderizar(){
+            let e = document.getElementById("espelho");
+            e.innerHTML = "";
+
+            for(tarefa of getTarefas()){
+                e.innerHTML += tarefa + "<br>" + "<hr>";
+            }
+        
+
+        }
+        
+        
+        
+
+
+
+        function getTarefas(){
+            //vai retornar todas as tarefas em forma de array
+            return JSON.parse(localStorage.getItem('tarefa'))
+        }
+
+        function apagarNoLocalStorage(){
+            localStorage.removeItem("tarefa");
+            let e = document.getElementById("espelho");
+            e.innerText = ""
+        }
+    
+        
+    
+    
+    
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+<a href="https://github.com/Andreprogdev"><div id="github"></div></a>
+<div id="divpai">
+    
+    <h1>DIGITE SUAS TAREFAS</h1>
+    <div id>
+        <input type="text" name="afazeres" id="caixa" Placeholder= "DIGITE AQUI">
+        <button name="enviarAfazeres" class="buttonCuston" onclick="salvarTarefaLocalStorage()" >ENVIE</button>
+        <button name="apagar "class="buttonCuston" onclick="apagarNoLocalStorage()">APAGUE</button>
+    <div id="espelho"></div>
+</div>
+
+
+</body>
+</html>

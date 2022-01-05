@@ -1,0 +1,84 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body{
+    background-image: linear-gradient( to left, rgb(0, 0, 95), rgb(0, 0, 43));
+    margin: 0px;
+    padding: 0px;
+    background-size: cover;
+}
+
+#divpai{
+   text-align: center;
+   background-image: linear-gradient( to left, rgb(110, 110, 250), rgb(0, 0, 68)) ;
+   margin-bottom: 20px;
+   margin-top: 50px;
+   border-radius: 20px;
+   height: 400px;
+   width: 400px;
+   margin: auto;
+   margin-top: 10%;
+}
+
+
+#caixa{
+    display: block;
+    margin:auto;
+
+    
+    
+}
+
+
+
+h1{
+    margin-bottom: 20px;
+    color:cyan ;   
+    font-family: 'Moon Dance', cursive;
+}
+
+#espelho{
+    background-color: white;
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    border-radius: 10px;
+    margin-left: 0px;
+    overflow:auto;
+
+    
+}
+
+#paragrafo{
+    color: black;
+}
+
+.buttonCuston{
+    background-color:rgb(0, 0, 68);
+    color: white;
+    font-family: cursive;
+    border:2px solid cyan;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 100px;    
+    margin-bottom: 20px;
+    
+}
+
+
+.buttonCuston:hover{
+    background-color: palevioletred;
+}
+
+
+#github{
+    width: 100px;
+    height: 100px;
+    background-image: url(./unnamed.png);
+    background-size: cover;
+    
+}
