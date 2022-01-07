@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
-<link rel="icon" href="./IMAGENS/shopping.png">
+
 
     <script>
 
@@ -53,16 +53,27 @@
             e.innerHTML = "";
 
             for(tarefa of getTarefas()){
-                e.innerHTML += tarefa + "<br>" + "<hr>";
+                e.innerHTML += `<li>${tarefa}<button onclick ="del(this)">x</button></li> <hr>`
             }
-        
-
         }
         
         
-        
+        function del(e){
+            
+            //parentNode serve para pegar o PAI do elemento citado(pai do botão é o LI)
+            let tarefaExcluir = e.parentNode.innerHTML
+            
+            // .replace serve para substituir algo por algo.
+            tarefaExcluir = tarefaExcluir.replace('<button onclick="del(this)">x</button>','')
+            
+            //filter filtra a informação que eu quero. Logo, tarefas vai ser um array SEM a tarefa que quero excluir.
+            let tarefas = getTarefas().filter (t=> t!=tarefaExcluir)
 
+            localStorage.setItem("tarefa", JSON.stringify(tarefas));
+            
+            renderizar()
 
+        }
 
         function getTarefas(){
             //vai retornar todas as tarefas em forma de array
@@ -74,6 +85,15 @@
             let e = document.getElementById("espelho");
             e.innerText = ""
         }
+    
+        onload = function DOMContentLoaded(){
+            let e = document.getElementById("espelho");
+            e.innerHTML = "";
+
+            renderizar();
+
+}
+    
     </script>
 
 
@@ -81,7 +101,6 @@
 
 <body>
 
-<a href="https://github.com/Andreprogdev"><div id="github"></div></a><
 <div id="divpai">
     
     <h1>DIGITE SUAS TAREFAS</h1>
@@ -89,7 +108,7 @@
         <input type="text" name="afazeres" id="caixa" Placeholder= "DIGITE AQUI">
         <button name="enviarAfazeres" class="buttonCuston" onclick="salvarTarefaLocalStorage()" >ENVIE</button>
         <button name="apagar "class="buttonCuston" onclick="apagarNoLocalStorage()">APAGUE</button>
-    <div id="espelho"></div>
+    <div id="divfilha"><ul id="espelho"></ul></div>
 </div>
 
 
